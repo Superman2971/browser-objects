@@ -10,6 +10,7 @@ export class AppWindowObjectComponent implements OnInit {
 
   items: FirebaseListObservable<any[]>;
   tests: FirebaseObjectObservable<any>;
+  window: FirebaseListObservable<any>;
 
   addToList(newItem: any) {
     this.items.push(newItem);
@@ -18,6 +19,7 @@ export class AppWindowObjectComponent implements OnInit {
   constructor(db: AngularFireDatabase) {
     this.items = db.list('/items');
     this.tests = db.object('/thing');
+    this.window = db.list('/window-object');
   }
 
   ngOnInit() {

@@ -13,4 +13,16 @@
   <br/>
   <div>-----------OBJECT BELOW----------</div>
   <div>{{ tests | async | json }}</div>
+  <br/>
+  <div>-----------WINDOW OBJECT BELOW----------</div>
+  <div>
+    <div *ngFor="let property of window | async">
+      <br/>
+      <div class="row" (click)="property.show = !property.show">
+        <div>-V-</div>
+        <div>{{property.$key}}</div>
+      </div>
+      <div *ngIf="property.show">{{property.description}}</div>
+    </div>
+  </div>
 </div>
