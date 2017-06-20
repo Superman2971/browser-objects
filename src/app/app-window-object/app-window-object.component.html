@@ -1,0 +1,16 @@
+<div>
+  <h1>window-object works!</h1>
+  <div>-----------LIST BELOW----------</div>
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.$value}}
+    </li>
+  </ul>
+  <div class="row">
+    <input type="text" #box (keyup.enter)="addToList(box.value)"/>
+    <button (click)="addToList(box.value)">Submit</button>
+  </div>
+  <br/>
+  <div>-----------OBJECT BELOW----------</div>
+  <div>{{ tests | async | json }}</div>
+</div>
