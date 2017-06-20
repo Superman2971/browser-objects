@@ -25,7 +25,7 @@ export class AppAddNewPropertyComponent implements OnInit {
   submit(name, type, url, description) {
     let data = {
       type: type,
-      example_url: url,
+      example_link: url,
       description: description
     };
     console.log(data);
