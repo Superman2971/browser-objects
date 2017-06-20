@@ -1,0 +1,22 @@
+<div>
+  app-add-new-property works!
+  <div class="row">
+    <div>Property Name:</div>
+    <input type="text" #name/>
+  </div>
+  <div class="row">
+    <div>Type:</div>
+    <input type="text" #type/>
+  </div>
+  <div class="row">
+    <div>Example Url:</div>
+    <input type="text" #url/>
+  </div>
+  <div class="row">
+    <div>Description:</div>
+    <input type="text" #description/>
+  </div>
+  <button (click)="submit(name.value, type.value, url.value, description.value)">SUBMIT</button>
+  <br/>
+  <button routerLink="/" routerLinkActive="active">RETURN HOME</button>
+</div>
