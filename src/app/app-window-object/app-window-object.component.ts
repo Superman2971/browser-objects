@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
   selector: 'app-window-object',
@@ -16,13 +17,20 @@ export class AppWindowObjectComponent implements OnInit {
     this.items.push(newItem);
   }
 
-  constructor(db: AngularFireDatabase) {
+  constructor(
+    db: AngularFireDatabase,
+    private AppBroadcaster:AppBroadcaster
+  ) {
     this.items = db.list('/items');
     this.tests = db.object('/thing');
     this.window = db.list('/window-object');
   }
 
   ngOnInit() {
+  }
+
+  sendInfo() {
+    this.AppBroadcaster.fire('testing', 'this random info');
   }
 
 }

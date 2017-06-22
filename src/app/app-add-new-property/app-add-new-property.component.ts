@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
   selector: 'app-add-new-property',
@@ -13,13 +14,22 @@ export class AppAddNewPropertyComponent implements OnInit {
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private AppBroadcaster:AppBroadcaster
   ) {
     this.window = db.list('/window-object');
   }
 
   ngOnInit() {
     console.log(this.ActivatedRoute.snapshot.data); // passing in data from router
+    this.registerSubscribe();
+  }
+
+  registerSubscribe() {
+    // subscribe for page navigation
+    this.AppBroadcaster.on('testing').subscribe(randomInfo => {
+      console.log('broadcasted', randomInfo);
+    });
   }
 
   submit(name, type, url, description) {

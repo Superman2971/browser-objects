@@ -8,13 +8,22 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+// DELETE THESE LATER
 import { AppWindowObjectComponent } from './app-window-object/app-window-object.component';
 import { AppAddNewPropertyComponent } from './app-add-new-property/app-add-new-property.component';
 import { AppWindowObjectPageComponent } from './app-window-object-page/app-window-object-page.component';
+// Components
+import { AppHomepageComponent } from './app-homepage/app-homepage.component';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { AppDevtoolsComponent } from './app-devtools/app-devtools.component';
+import { AppDetailPageComponent } from './app-detail-page/app-detail-page.component';
+import { AppDetailPageNavbarComponent } from './app-detail-page-navbar/app-detail-page-navbar.component';
+// Services
+import { AppBroadcaster } from './services/app-broadcaster.service';
 
 const appRoutes: Routes = [{
     path: '',
-    component: AppWindowObjectComponent
+    component: AppDevtoolsComponent
   }, {
     path: 'add',
     component: AppAddNewPropertyComponent,
@@ -26,7 +35,7 @@ const appRoutes: Routes = [{
     component: AppWindowObjectPageComponent
   }, {
     path: '**', // a catch all for page not found, maybe make a PageNotFoundComponent
-    component: AppWindowObjectComponent
+    component: AppDevtoolsComponent
 }];
 
 @NgModule({
@@ -34,7 +43,12 @@ const appRoutes: Routes = [{
     AppComponent,
     AppWindowObjectComponent,
     AppAddNewPropertyComponent,
-    AppWindowObjectPageComponent
+    AppWindowObjectPageComponent,
+    AppHomepageComponent,
+    AppNavbarComponent,
+    AppDevtoolsComponent,
+    AppDetailPageComponent,
+    AppDetailPageNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +58,9 @@ const appRoutes: Routes = [{
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFireDatabaseModule // imports firebase/database, only needed for database features
   ],
-  providers: [],
+  providers: [
+    AppBroadcaster
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
