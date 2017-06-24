@@ -18,8 +18,13 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppDevtoolsComponent } from './app-devtools/app-devtools.component';
 import { AppDetailPageComponent } from './app-detail-page/app-detail-page.component';
 import { AppDetailPageNavbarComponent } from './app-detail-page-navbar/app-detail-page-navbar.component';
+import { AppSearchbarComponent } from './app-searchbar/app-searchbar.component';
 // Services
 import { AppBroadcaster } from './services/app-broadcaster.service';
+import { WindowRef } from './services/app-window-ref.service';
+// Pipes
+import { FilterPipe } from './pipes/filterby.pipe';
+import { PropertiesPipe } from './pipes/properties.pipe';
 
 const appRoutes: Routes = [{
     path: '',
@@ -48,7 +53,10 @@ const appRoutes: Routes = [{
     AppNavbarComponent,
     AppDevtoolsComponent,
     AppDetailPageComponent,
-    AppDetailPageNavbarComponent
+    AppDetailPageNavbarComponent,
+    AppSearchbarComponent,
+    FilterPipe,
+    PropertiesPipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +67,8 @@ const appRoutes: Routes = [{
     AngularFireDatabaseModule // imports firebase/database, only needed for database features
   ],
   providers: [
-    AppBroadcaster
+    AppBroadcaster,
+    WindowRef
   ],
   bootstrap: [AppComponent]
 })

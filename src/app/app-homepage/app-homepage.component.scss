@@ -2,44 +2,9 @@
   min-height: 40vh;
 
   .logo {
-    font-size: 120px;
-    margin-bottom: 32px;
-  }
-  
-  input {
-    border-radius: 1px;
-    border: 1px solid rgba(0,0,0,0.12);
-    font-size: 24px;
-    height: 44px;
-    padding: 0 48px 0 16px;
-    width: 300px;
-  }
-
-  .search-icon {
-    display: inline-block;
-    height: 44px;
-    position: absolute;
-    right: 0;
-    top: 3px;
-    transform: scale(0.5);
-    width: 44px;
-  }
-
-  .dropdown {
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
-    border: none;
-    width: 300px;
-    top: 44px;
-    position: absolute;
-    left: 0;
-
-    .option {
-      cursor: pointer;
-      padding: 4px 16px;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.24);
-      }
-    }
+    font-family: 'NTR', sans-serif;
+    font-size: 100px;
+    height: 92px;
+    margin: 32px 16px;
   }
 }

@@ -1,3 +1,48 @@
-<p>
-  app-devtools works!
-</p>
+<div class="devtools">
+  <div class="tabs row">
+    <div class="tab">Console</div>
+    <!-- <div class="close">x</div> -->
+    <svg class="close">
+      <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+    </svg>
+  </div>
+  <div class="filters row">
+    <div class="clear">x</div>
+    <div class="filter-types">
+      <div>{{filterType}}</div>
+      <div class="arrow">^</div>
+    </div>
+    <div *ngIf="showDropdown" class="dropdown">
+      <div class="option" *ngFor="let type of types">
+        <div>{{type}}</div>
+      </div>
+    </div>
+    <div class="input-container">
+      <input #filter type="text" placeholder="Filter"/>
+      <div class="empty" (click)="filter.value = ''">x</div>
+    </div>
+  </div>
+  <div class="console">
+    <div class="row">
+      <div class="arrow">></div>
+      <div class="column">
+        <div *ngIf="!browserObject">Angular is running in the development mode.</div>
+        <!-- <div *ngIf="browserObject">{{browserObject | json}}</div> -->
+        <div *ngFor="let prop1 of browserObject | properties">
+          <div class="property row" (click)="prop1.opened = !prop1.opened">
+            <svg class="drop-arrow" [class.open]="prop1.opened">
+              <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
+            </svg>
+            <div>{{prop1.key}}:&nbsp;</div>
+            <!-- <div>{{prop1.value | json}}</div> -->
+            <div *ngIf="prop1.propertyType === 'function'" class="function">function <span>{{prop1.key}}()</span></div>
+            <div *ngIf="prop1.propertyType === 'object'" class="object">Object</div>
+          </div>
+          <div *ngIf="prop1.opened">
+            <div>{{prop1 | json}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
