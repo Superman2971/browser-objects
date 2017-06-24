@@ -13,7 +13,7 @@ export class AppDevtoolsComponent implements OnInit {
   browserObject:any;
   fakeObject:any = {
     JSON3: {
-      propertyType: 'Object',
+      propertyType: 'object',
       length: 4,
       name: 'JSON3',
       noConflict: {
@@ -22,7 +22,7 @@ export class AppDevtoolsComponent implements OnInit {
         caller: 'null',
         length: 0,
         name: 'noConflict',
-        prototype: 'Object'
+        prototype: 'object'
       },
       parse: {
         propertyType: 'function',
@@ -30,7 +30,7 @@ export class AppDevtoolsComponent implements OnInit {
         caller: 'null',
         length: 2,
         name: 'parse',
-        prototype: 'Object'
+        prototype: 'object'
       },
       runInContext: {
         propertyType: 'function',
@@ -38,7 +38,7 @@ export class AppDevtoolsComponent implements OnInit {
         caller: 'null',
         length: 2,
         name: 'runInContext',
-        prototype: 'Object'
+        prototype: 'object'
       },
       stringify: {
         propertyType: 'function',
