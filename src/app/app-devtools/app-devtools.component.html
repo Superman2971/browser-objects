@@ -6,7 +6,7 @@
     </svg>
   </div>
   <div class="filters row">
-    <svg class="clear" (click)="browserObject = false">
+    <svg class="clear" (click)="browserObject = {}">
       <path d="M9 1c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM3 9c0-1.294 0.416-2.491 1.116-3.472l8.356 8.356c-0.981 0.7-2.178 1.116-3.472 1.116-3.309 0-6-2.691-6-6zM13.884 12.472l-8.356-8.356c0.981-0.7 2.178-1.116 3.472-1.116 3.309 0 6 2.691 6 6 0 1.294-0.416 2.491-1.116 3.472z"></path>
     </svg>
     <div class="filter-types">
@@ -28,50 +28,10 @@
     </div>
   </div>
   <div class="console">
-    <div class="row">
-      <svg class="arrow">
-        <path d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
-      </svg>
-      <div class="column">
-        <div *ngIf="!browserObject" class="tier1">Angular is running in the development mode.</div>
-        <div *ngIf="browserObject" class="tier1 row" (click)="showBrowserObject = !showBrowserObject">
-          <svg class="drop-arrow" [class.open]="showBrowserObject">
-            <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
-          </svg>
-          <div>Window</div>
-        </div>
-        <div *ngIf="showBrowserObject">
-          <div *ngFor="let prop1 of browserObject | properties">
-            <!-- Top Level Properties -->
-            <div class="tier2 row" (click)="browserObject[prop1].opened = !browserObject[prop1].opened">
-              <svg class="drop-arrow" [class.open]="browserObject[prop1].opened">
-                <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
-              </svg>
-              <div>{{prop1}}:&nbsp;</div>
-              <div *ngIf="browserObject[prop1].propertyType === 'function'" class="function">function <span>{{prop1}} ( )</span></div>
-              <div *ngIf="browserObject[prop1].propertyType === 'object'" class="object">Object</div>
-            </div>
-            <div *ngIf="browserObject[prop1].opened">
-              <div class="tier3" *ngFor="let prop2 of browserObject[prop1] | properties" (click)="browserObject[prop1][prop2].opened = !browserObject[prop1][prop2].opened">
-                <!-- <div>{{prop2}}</div> -->
-                <!-- -->
-                <svg class="drop-arrow" [class.open]="browserObject[prop1][prop2].opened">
-                  <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
-                </svg>
-                <div>{{prop2}}:&nbsp;</div>
-                <div *ngIf="browserObject[prop1][prop2].propertyType === 'function'" class="function">function <span>{{prop1}} ( )</span></div>
-                <div *ngIf="browserObject[prop1][prop2].propertyType === 'object'" class="object">Object</div>
-                <div *ngIf="browserObject[prop1][prop2].opened">
-                  <div class="tier4" *ngFor="let prop3 of browserObject[prop1][prop2] | properties">
-                    <div>{{prop3}}</div>
-                  </div>
-                </div>
-                <!-- -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <svg class="arrow">
+      <path d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+    </svg>
+    <div *ngIf="!browserObject" class="welcome">Welcome to Browser Object!</div>
+    <app-object-tier [tier]="browserObject"></app-object-tier>
   </div>
 </div>

@@ -16,6 +16,8 @@ import { AppWindowObjectPageComponent } from './app-window-object-page/app-windo
 import { AppHomepageComponent } from './app-homepage/app-homepage.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppDevtoolsComponent } from './app-devtools/app-devtools.component';
+import { AppObjectTierComponent } from './app-object-tier/app-object-tier.component';
+import { AppObjectPropertyComponent } from './app-object-property/app-object-property.component';
 import { AppDetailPageComponent } from './app-detail-page/app-detail-page.component';
 import { AppDetailPageNavbarComponent } from './app-detail-page-navbar/app-detail-page-navbar.component';
 import { AppSearchbarComponent } from './app-searchbar/app-searchbar.component';
@@ -52,6 +54,8 @@ const appRoutes: Routes = [{
     AppHomepageComponent,
     AppNavbarComponent,
     AppDevtoolsComponent,
+    AppObjectTierComponent,
+    AppObjectPropertyComponent,
     AppDetailPageComponent,
     AppDetailPageNavbarComponent,
     AppSearchbarComponent,

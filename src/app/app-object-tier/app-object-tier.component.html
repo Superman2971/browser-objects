@@ -1,0 +1,23 @@
+<div class="object-tier" *ngFor="let property of tier | properties">
+  <!-- row for property -->
+  <div *ngIf="!tier[property].name && property !== 'opened' && property !== 'propertyType'" class="row">
+    <div>{{property}}:</div>
+    <app-object-property [property]="tier[property]"></app-object-property>
+  </div>
+  <!-- row for dropdown -->
+  <div *ngIf="tier[property].name" class="drop row" (click)="tier[property].opened = !tier[property].opened">
+    <svg class="drop-arrow" [class.open]="tier[property].opened">
+      <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
+    </svg>
+    <div [class.window]="property === 'window'">{{property}}</div>
+    <div *ngIf="tier[property].propertyType === 'function'" class="function">
+      <span>:&nbsp;</span>function&nbsp;<span>{{property}}&nbsp;(&nbsp;)</span>
+    </div>
+    <div *ngIf="tier[property].propertyType === 'object'">
+      <span>&nbsp;{{property}}</span>
+    </div>
+    <!-- need styles for array, function, object.. other? -->
+  </div>
+  <!-- open new dropdown tier -->
+  <app-object-tier *ngIf="tier[property].opened" [tier]="tier[property]"></app-object-tier>
+</div>

@@ -1,10 +1,20 @@
 .homepage {
-  min-height: 40vh;
+  height: 256px;
+
+  @media (max-width: 600px) {
+    height: 172px;
+  }
 
   .logo {
     font-family: 'NTR', sans-serif;
     font-size: 100px;
     height: 92px;
     margin: 32px 16px;
+
+    @media (max-width: 650px) {
+      font-size: 48px;
+      height: 40px;
+      margin: 16px 8px;
+    }
   }
 }

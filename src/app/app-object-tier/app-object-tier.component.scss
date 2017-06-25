@@ -1,0 +1,44 @@
+.object-tier {
+  color: #882baf;
+  font-family: 'Arimo', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  padding-left: 16px;
+
+  .row {
+    padding: 2px 0;
+    position: relative;
+
+    &.drop {
+      cursor: pointer;
+    }
+
+    span {
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+
+  .window {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  .function {
+    color: #d067d3;
+  }
+
+  .drop-arrow {
+    fill: rgba(0, 0, 0, 0.54);
+    height: 24px;
+    left: -24px;
+    min-width: 24px;
+    position: absolute;
+    top: -2px;
+    transform: scale(0.75);
+    transition: 0.3s;
+    width: 30px;
+
+    &.open {
+      transform: scale(0.75) rotate(90deg);
+    }
+  }
+}

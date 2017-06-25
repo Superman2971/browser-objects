@@ -12,83 +12,86 @@ export class AppDevtoolsComponent implements OnInit {
   types = ['All', 'Properties', 'Functions', 'Other?'];
   browserObject:any;
   fakeObject:any = {
-    JSON3: {
-      propertyType: 'object',
-      length: 4,
-      name: 'JSON3',
-      noConflict: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 0,
-        name: 'noConflict',
-        prototype: 'object'
+    window: {
+      name: 'window',
+      JSON3: {
+        propertyType: 'object',
+        length: 4,
+        name: 'JSON3',
+        noConflict: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 0,
+          name: 'noConflict',
+          prototype: 'object'
+        },
+        parse: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 2,
+          name: 'parse',
+          prototype: 'object'
+        },
+        runInContext: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 2,
+          name: 'runInContext',
+          prototype: 'object'
+        },
+        stringify: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        }
       },
-      parse: {
+      Zone: {
         propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
         length: 2,
-        name: 'parse',
-        prototype: 'object'
-      },
-      runInContext: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 2,
-        name: 'runInContext',
-        prototype: 'object'
-      },
-      stringify: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
-      }
-    },
-    Zone: {
-      propertyType: 'function',
-      length: 2,
-      name: 'Zone',
-      assertZonePatched: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
-      },
-      current: {},
-      currentTask: {},
-      root: {},
-      __load_patch: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
-      },
-      __symbol: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
-      },
-      __zone_symbol__rejectionHandledHandler: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
-      },
-      __zone_symbol__unhandledPromiseRejectionHandler: {
-        propertyType: 'function',
-        arguments: 'null',
-        caller: 'null',
-        length: 3,
-        name: 'stringify'
+        name: 'Zone',
+        assertZonePatched: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        },
+        current: {},
+        currentTask: {},
+        root: {},
+        __load_patch: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        },
+        __symbol: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        },
+        __zone_symbol__rejectionHandledHandler: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        },
+        __zone_symbol__unhandledPromiseRejectionHandler: {
+          propertyType: 'function',
+          arguments: 'null',
+          caller: 'null',
+          length: 3,
+          name: 'stringify'
+        }
       }
     }
   };

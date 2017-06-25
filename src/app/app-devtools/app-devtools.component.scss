@@ -1,5 +1,10 @@
 .devtools {
-  height: 100%;
+  background-color: #fff;
+  height: calc(100vh - 312px);
+
+  @media (max-width: 600px) {
+    height: calc(100vh - 228px);
+  }
 
   .tabs {
     background-color: rgba(0, 0, 0, 0.03);
@@ -93,10 +98,14 @@
   .console {
     font-family: 'Arimo', sans-serif;
     font-size: 12px;
-    height: calc(60vh - 112px);
+    height: calc(100vh - 368px);
     overflow: scroll;
-    padding: 8px;
+    padding: 8px 8px 8px 32px;
     position: relative;
+
+    @media (max-width: 600px) {
+      height: calc(100vh - 284px);
+    }
 
     .arrow {
       fill: #4285f4;
@@ -108,46 +117,8 @@
       width: 24px;
     }
 
-    .tier1 {
-      cursor: pointer;
-      margin-left: 40px;
+    .welcome {
       padding: 2px 0;
-      position: relative;
-    }
-
-    .tier2 {
-      cursor: pointer;
-      margin-left: 56px;
-      padding: 2px 0;
-      position: relative;
-    }
-
-    .tier3 {
-      margin-left: 72px;
-      padding: 2px 0;
-      position: relative;
-    }
-
-    .tier4 {
-      margin-left: 98px;
-      padding: 2px 0;
-      position: relative;
-    }
-
-    .drop-arrow {
-      bottom: -4px;
-      fill: rgba(0, 0, 0, 0.54);
-      height: 24px;
-      left: -24px;
-      min-width: 24px;
-      position: absolute;
-      transform: scale(0.75);
-      transition: 0.3s;
-      width: 24px;
-
-      &.open {
-        transform: scale(0.75) rotate(90deg);
-      }
     }
   }
 }
