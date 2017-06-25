@@ -16,7 +16,7 @@
     <div *ngIf="tier[property].propertyType === 'object'">
       <span>&nbsp;{{property}}</span>
     </div>
-    <!-- need styles for array, function, object.. other? -->
+    <!-- need styles for nothing, array, function, function with params, object, 'Object' -->
   </div>
   <!-- open new dropdown tier -->
   <app-object-tier *ngIf="tier[property].opened" [tier]="tier[property]"></app-object-tier>

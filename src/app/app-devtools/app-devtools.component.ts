@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 import { WindowRef } from '../services/app-window-ref.service';
 
 @Component({
@@ -6,104 +8,29 @@ import { WindowRef } from '../services/app-window-ref.service';
   templateUrl: './app-devtools.component.html',
   styleUrls: ['./app-devtools.component.scss']
 })
-export class AppDevtoolsComponent implements OnInit {
+export class AppDevtoolsComponent {
 
   filterType = 'All';
   types = ['All', 'Properties', 'Functions', 'Other?'];
-  browserObject:any;
-  fakeObject:any = {
-    window: {
-      name: 'window',
-      JSON3: {
-        propertyType: 'object',
-        length: 4,
-        name: 'JSON3',
-        noConflict: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 0,
-          name: 'noConflict',
-          prototype: 'object'
-        },
-        parse: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 2,
-          name: 'parse',
-          prototype: 'object'
-        },
-        runInContext: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 2,
-          name: 'runInContext',
-          prototype: 'object'
-        },
-        stringify: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        }
-      },
-      Zone: {
-        propertyType: 'function',
-        length: 2,
-        name: 'Zone',
-        assertZonePatched: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        },
-        current: {},
-        currentTask: {},
-        root: {},
-        __load_patch: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        },
-        __symbol: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        },
-        __zone_symbol__rejectionHandledHandler: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        },
-        __zone_symbol__unhandledPromiseRejectionHandler: {
-          propertyType: 'function',
-          arguments: 'null',
-          caller: 'null',
-          length: 3,
-          name: 'stringify'
-        }
-      }
-    }
-  };
+  browserObject: FirebaseListObservable<any[]>;
 
-  constructor(private winRef: WindowRef) {
+  constructor(
+    private winRef: WindowRef,
+    private db: AngularFireDatabase,
+    private AppBroadcaster:AppBroadcaster
+  ) {
     console.log(winRef.window);
+    this.registerSubscribe();
   }
 
-  ngOnInit() {
-    setTimeout( () => {
-      this.browserObject = this.fakeObject;
-    }, 2000);
+  registerSubscribe() {
+    // subscribe for page navigation
+    this.AppBroadcaster.on('selectedObject').subscribe(objectLink => {
+      if (objectLink) {
+        this.browserObject = this.db.list('' + objectLink);
+      } else {
+        this.browserObject = undefined;
+      }
+    });
   }
-
 }

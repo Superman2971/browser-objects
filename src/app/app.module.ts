@@ -8,18 +8,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-// DELETE THESE LATER
-import { AppWindowObjectComponent } from './app-window-object/app-window-object.component';
+// DELETE THIS LATER
 import { AppAddNewPropertyComponent } from './app-add-new-property/app-add-new-property.component';
-import { AppWindowObjectPageComponent } from './app-window-object-page/app-window-object-page.component';
 // Components
 import { AppHomepageComponent } from './app-homepage/app-homepage.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppDevtoolsComponent } from './app-devtools/app-devtools.component';
 import { AppObjectTierComponent } from './app-object-tier/app-object-tier.component';
 import { AppObjectPropertyComponent } from './app-object-property/app-object-property.component';
-import { AppDetailPageComponent } from './app-detail-page/app-detail-page.component';
-import { AppDetailPageNavbarComponent } from './app-detail-page-navbar/app-detail-page-navbar.component';
 import { AppSearchbarComponent } from './app-searchbar/app-searchbar.component';
 // Services
 import { AppBroadcaster } from './services/app-broadcaster.service';
@@ -38,9 +34,6 @@ const appRoutes: Routes = [{
       object_route: '/window-object'
     }
   }, {
-    path: 'window-object',
-    component: AppWindowObjectPageComponent
-  }, {
     path: '**', // a catch all for page not found, maybe make a PageNotFoundComponent
     component: AppDevtoolsComponent
 }];
@@ -48,16 +41,12 @@ const appRoutes: Routes = [{
 @NgModule({
   declarations: [
     AppComponent,
-    AppWindowObjectComponent,
     AppAddNewPropertyComponent,
-    AppWindowObjectPageComponent,
     AppHomepageComponent,
     AppNavbarComponent,
     AppDevtoolsComponent,
     AppObjectTierComponent,
     AppObjectPropertyComponent,
-    AppDetailPageComponent,
-    AppDetailPageNavbarComponent,
     AppSearchbarComponent,
     FilterPipe,
     PropertiesPipe

@@ -1,4 +1,5 @@
 import { Component, ElementRef, Renderer } from '@angular/core';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -9,7 +10,8 @@ export class AppSearchbarComponent {
 
   objects = [{
     text: 'window',
-    progress: 'in progress'
+    progress: 'in progress',
+    link: '/window'
   }, {
     text: 'document',
     progress: 'coming soon'
@@ -27,7 +29,11 @@ export class AppSearchbarComponent {
   placeholder:string;
   showDropdown = false;
 
-  constructor(public elem: ElementRef, private renderer: Renderer) {
+  constructor(
+    public elem: ElementRef,
+    private renderer: Renderer,
+    private AppBroadcaster:AppBroadcaster
+  ) {
     renderer.listenGlobal("document", "click", (event: any) => {
       if (this.showDropdown && event.target && this.elem.nativeElement !== event.target && !this.elem.nativeElement.contains(event.target)) {
         this.showDropdown = false;
@@ -39,7 +45,10 @@ export class AppSearchbarComponent {
     this.showDropdown = false;
     this.searchText = '';
     this.placeholder = option.text;
-    console.log('this is where we have a ui-state change or send event (send event) to devtools for ', option.text);
+    this.sendInfo(option.link);
   }
 
+  sendInfo(objectLink) {
+    this.AppBroadcaster.fire('selectedObject', objectLink);
+  }
 }
