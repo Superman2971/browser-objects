@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AppBroadcaster } from '../services/app-broadcaster.service';
 import { WindowRef } from '../services/app-window-ref.service';
 
@@ -12,7 +12,7 @@ export class AppDevtoolsComponent {
 
   filterType = 'All';
   types = ['All', 'Properties', 'Functions', 'Other?'];
-  browserObject: FirebaseListObservable<any[]>;
+  browserObject: FirebaseObjectObservable<any[]>;
 
   constructor(
     private winRef: WindowRef,
@@ -27,7 +27,7 @@ export class AppDevtoolsComponent {
     // subscribe for page navigation
     this.AppBroadcaster.on('selectedObject').subscribe(objectLink => {
       if (objectLink) {
-        this.browserObject = this.db.list('' + objectLink);
+        this.browserObject = this.db.object('' + objectLink);
       } else {
         this.browserObject = undefined;
       }
