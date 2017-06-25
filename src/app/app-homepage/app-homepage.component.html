@@ -1,4 +1,4 @@
-<div class="homepage">
+<div class="homepage" [class.details]="propertyDetails">
   <div *ngIf="!propertyDetails" class="column center">
     <div class="logo row center">
       <span [style.color]="'#4285f4'">B</span>
@@ -18,5 +18,43 @@
       <span [style.color]="'#4eb46a'">s</span>
     </div>
     <app-searchbar></app-searchbar>
+  </div>
+  <div *ngIf="propertyDetails" class="details-page">
+    <div class="results">results found for {{propertyName}}</div>
+    <div>
+      <div class="header">Definition and Usage</div>
+      <div class="content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</div>
+    </div>
+    <div *ngIf="propertyDetails.propertyType" class="table">
+      <div class="header">Browser Support</div>
+      <div class="row1 row">
+        <div>Method</div>
+        <div>Chrome</div>
+        <div>Firefox</div>
+        <div>Internet Explorer</div>
+        <div>Safari</div>
+        <div>Opera</div>
+      </div>
+      <div class="row2 row">
+        <div>FakeMethod()</div>
+        <div>Yes</div>
+        <div>Yes</div>
+        <div>Yes</div>
+        <div>Yes</div>
+        <div>Yes</div>
+      </div>
+    </div>
+    <div *ngIf="propertyDetails.length > 0 && propertyDetails.propertyType">
+      <div class="header">Parameter Values</div>
+      <div class="content">if it has these, then need to describe each (parameter name, type, description)</div>
+    </div>
+    <div *ngIf="propertyDetails.propertyType">
+      <div class="header">Object Methods</div>
+      <div class="content">if it has these, then need to describe each (parameter name, type, description)</div>
+    </div>
+    <div>
+      <div class="header">Examples</div>
+      <div class="content">maybe a code sample or maybe a description of things you could use this with</div>
+    </div>
   </div>
 </div>

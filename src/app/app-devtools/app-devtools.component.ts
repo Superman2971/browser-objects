@@ -24,7 +24,6 @@ export class AppDevtoolsComponent {
   }
 
   registerSubscribe() {
-    // subscribe for page navigation
     this.AppBroadcaster.on('selectedObject').subscribe(objectLink => {
       if (objectLink) {
         this.browserObject = this.db.object('' + objectLink);

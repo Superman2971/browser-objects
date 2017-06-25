@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,8 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-navbar.component.scss']
 })
 export class AppNavbarComponent {
+  @Input() details;
   showAbout = false;
   notInAbout = true;
+
+  constructor(private AppBroadcaster:AppBroadcaster) {}
 
   closeAbout() {
     this.notInAbout = true;
@@ -16,5 +20,9 @@ export class AppNavbarComponent {
         this.showAbout = false;
       }
     }, 300);
+  }
+
+  resetHomepage() {
+    this.AppBroadcaster.fire('selectedObject', false);
   }
 }

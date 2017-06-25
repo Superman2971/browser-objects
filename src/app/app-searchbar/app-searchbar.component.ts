@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer } from '@angular/core';
+import { Component, ElementRef, Renderer, Input } from '@angular/core';
 import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AppBroadcaster } from '../services/app-broadcaster.service';
   styleUrls: ['./app-searchbar.component.scss']
 })
 export class AppSearchbarComponent {
-
+  @Input() navbar;
   objects = [{
     text: 'window',
     progress: 'in progress',

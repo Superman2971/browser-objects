@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
   selector: 'app-object-tier',
@@ -7,4 +8,14 @@ import { Component, Input } from '@angular/core';
 })
 export class AppObjectTierComponent {
   @Input() tier;
+
+  constructor(private AppBroadcaster:AppBroadcaster) {}
+
+  selectProperty(key, value) {
+    let sendObject = {
+      key: key,
+      value: value
+    };
+    this.AppBroadcaster.fire('propertySelected', sendObject);
+  }
 }

@@ -1,11 +1,11 @@
 <div class="object-tier" *ngFor="let property of tier | properties">
   <!-- row for property -->
-  <div *ngIf="!tier[property].name && property !== 'opened' && property !== 'propertyType'" class="row">
+  <div *ngIf="!tier[property].name && property !== 'opened' && property !== 'propertyType'" class="row" (click)="selectProperty(property, tier[property])">
     <div>{{property}}:</div>
     <app-object-property [property]="tier[property]"></app-object-property>
   </div>
   <!-- row for dropdown -->
-  <div *ngIf="tier[property].name" class="drop row" (click)="tier[property].opened = !tier[property].opened">
+  <div *ngIf="tier[property].name" class="drop row" (click)="selectProperty(property, tier[property]); tier[property].opened = !tier[property].opened">
     <svg class="drop-arrow" [class.open]="tier[property].opened">
       <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
     </svg>

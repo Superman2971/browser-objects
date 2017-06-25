@@ -1,5 +1,21 @@
 .searchbar {
   margin-bottom: 56px;
+
+  &.navbar {
+    @media (max-width: 1060px) {
+      input {
+        max-width: 300px;
+      }
+
+      .dropdown {
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 775px) {
+      display: none;
+    }
+  }
   
   input {
     border-radius: 1px;
@@ -16,6 +32,7 @@
 
   .search-icon {
     display: inline-block;
+    fill: #4285f4;
     height: 44px;
     position: absolute;
     right: 0;
