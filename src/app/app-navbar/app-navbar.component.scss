@@ -71,11 +71,23 @@
       background-color: #fafafa;
       border: 1px solid rgba(0, 0, 0, 0.24);
       border-radius: 4px;
+      color: rgba(0, 0, 0, 54);
+      font-size: 16px;
       padding: 8px;
       position: absolute;
       right: 0;
       top: 40px;
-      width: 250px;
+      width: 196px;
+
+      a {
+        font-size: 16px;
+        padding-left: 4px;
+      }
+
+      .blue {
+        color: #4285f4;
+        padding-top: 4px;
+      }
     }
   }
 }
