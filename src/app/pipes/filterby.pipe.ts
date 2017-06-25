@@ -8,7 +8,7 @@ import { Pipe, Injectable } from '@angular/core';
 @Injectable()
 export class FilterPipe {
 
-  private filterStrings(filter) {
+  private filterArrayOfStrings(filter) {
     if (filter) {
       filter = filter.toLowerCase();
     }
@@ -17,7 +17,7 @@ export class FilterPipe {
     }
   }
 
-  private filterObjects(filter, property) {
+  private filterArrayOfObjects(filter, property) {
     if (filter) {
       filter = filter.toLowerCase();
     }
@@ -30,9 +30,9 @@ export class FilterPipe {
     if (!array || !filter) {
       return array;
     } else if (property) {
-      return array.filter(this.filterObjects(filter, property));
+      return array.filter(this.filterArrayOfObjects(filter, property));
     } else {
-      return array.filter(this.filterStrings(filter));
+      return array.filter(this.filterArrayOfStrings(filter));
     }
   }
 }

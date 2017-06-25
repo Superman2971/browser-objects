@@ -11,7 +11,7 @@ import { WindowRef } from '../services/app-window-ref.service';
 export class AppDevtoolsComponent {
 
   filterType = 'All';
-  types = ['All', 'Properties', 'Functions', 'Other?'];
+  types = ['All', 'Properties', 'Functions', 'Objects'];
   browserObject: FirebaseObjectObservable<any[]>;
 
   constructor(
@@ -31,5 +31,9 @@ export class AppDevtoolsComponent {
         this.browserObject = undefined;
       }
     });
+  }
+
+  changeFilterType(newFilter) {
+    this.filterType = newFilter;
   }
 }
