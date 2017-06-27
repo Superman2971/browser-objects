@@ -1,5 +1,5 @@
 .object-tier {
-  color: #882baf;
+  color: rgba(0, 0, 0, 0.87);
   font-family: 'Arimo', sans-serif;
   font-size: 12px;
   font-weight: 300;
@@ -12,18 +12,14 @@
     &.drop {
       cursor: pointer;
     }
+  }
 
-    span {
+  .purple {
+    color: #882baf;
+
+    &.window {
       color: rgba(0, 0, 0, 0.87);
     }
-  }
-
-  .window {
-    color: rgba(0, 0, 0, 0.87);
-  }
-
-  .function {
-    color: #d067d3;
   }
 
   .drop-arrow {
