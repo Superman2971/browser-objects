@@ -1,5 +1,5 @@
-<div class="devtools">
-  <div class="tabs row">
+<div class="devtools" [style.top]="top + 'px'">
+  <div class="tabs row" (mousedown)="changeHeightStart()" (mouseup)="changeHeightStop()">
     <div class="tab">Console</div>
     <svg class="close">
       <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
@@ -24,7 +24,7 @@
       </svg>
     </div>
   </div>
-  <div class="console">
+  <div class="console" [style.height]="height + 'px'">
     <svg class="arrow">
       <path d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
     </svg>

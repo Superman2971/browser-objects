@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AppBroadcaster } from '../services/app-broadcaster.service';
 import { WindowRef } from '../services/app-window-ref.service';
@@ -9,17 +9,25 @@ import { WindowRef } from '../services/app-window-ref.service';
   styleUrls: ['./app-devtools.component.scss']
 })
 export class AppDevtoolsComponent {
-
+  mousemoveListener: () => void;
+  mouseupListener: () => void;
   filterType = 'All';
   types = ['All', 'Properties', 'Functions', 'Objects'];
   browserObject: FirebaseObjectObservable<any[]>;
+  height:number;
+  yStart = 0;
+  notSetYet = true;
+  top = 312;
 
   constructor(
     private winRef: WindowRef,
     private db: AngularFireDatabase,
-    private AppBroadcaster:AppBroadcaster
+    private AppBroadcaster:AppBroadcaster,
+    private elem: ElementRef,
+    private renderer: Renderer2
   ) {
     console.log(winRef.window);
+    this.height = winRef.window.innerHeight - 368;
     this.registerSubscribe();
   }
 
@@ -35,5 +43,29 @@ export class AppDevtoolsComponent {
 
   changeFilterType(newFilter) {
     this.filterType = newFilter;
+  }
+
+  changeHeightStart() {
+    this.mousemoveListener = this.renderer.listen('body', 'mousemove', (event: MouseEvent) => {
+      if (this.notSetYet) {
+        this.yStart = event.clientY;
+        this.notSetYet = false;
+      }
+      this.height = this.winRef.window.innerHeight - 468 - (event.clientY - this.yStart);
+      this.top = 412 - (this.yStart - event.clientY);
+      this.AppBroadcaster.fire('heightChange', this.top);
+    });
+    this.mouseupListener = this.renderer.listen('body', 'mouseup', () => {
+      this.changeHeightStop();
+    });
+  }
+
+  changeHeightStop() {
+    if (this.mousemoveListener) {
+      this.mousemoveListener();
+    }
+    if (this.mouseupListener) {
+      this.mouseupListener()
+    }
   }
 }

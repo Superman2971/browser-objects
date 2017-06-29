@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer, Input } from '@angular/core';
+import { Component, ElementRef, Renderer2, Input } from '@angular/core';
 import { AppBroadcaster } from '../services/app-broadcaster.service';
 
 @Component({
@@ -31,10 +31,10 @@ export class AppSearchbarComponent {
 
   constructor(
     public elem: ElementRef,
-    private renderer: Renderer,
+    private renderer: Renderer2,
     private AppBroadcaster:AppBroadcaster
   ) {
-    renderer.listenGlobal("document", "click", (event: any) => {
+    renderer.listen('document', 'click', (event: any) => {
       if (this.showDropdown && event.target && this.elem.nativeElement !== event.target && !this.elem.nativeElement.contains(event.target)) {
         this.showDropdown = false;
       }
